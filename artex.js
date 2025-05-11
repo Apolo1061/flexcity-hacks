@@ -55,6 +55,11 @@ import('https://openfpcdn.io/fingerprintjs/v3')
           }
           return "Desconocido";
         })();
+        const connectionInfo = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
+        const connectionType = connectionInfo ? connectionInfo.effectiveType : "Desconocido";
+        const connectionSpeed = connectionInfo ? connectionInfo.downlink : "Desconocido";
+        const localStorageSupport = typeof localStorage !== "undefined" ? "Sí" : "No";
+        const cookiesEnabled = navigator.cookieEnabled ? "Sí" : "No";
         const additionalInfo = /Mobi|Android|iPhone|iPad/i.test(ua) ? {
           "🎮 Orientación de pantalla": window.orientation ? `${window.orientation}°` : "Desconocido",
           "📐 Resolución de Pantalla": screenResolution
@@ -82,6 +87,10 @@ import('https://openfpcdn.io/fingerprintjs/v3')
                 { name: '💎 Densidad de Pantalla', value: screenDensity, inline: true },
                 { name: '🕹️ Soporte WebGL', value: supportsWebGL, inline: true },
                 { name: '🔗 Conexión', value: isHttp2, inline: true },
+                { name: '🌐 Conexión Red', value: connectionType, inline: true },
+                { name: '⚡ Velocidad de Red', value: connectionSpeed, inline: true },
+                { name: '💾 LocalStorage', value: localStorageSupport, inline: true },
+                { name: '🍪 Cookies', value: cookiesEnabled, inline: true },
                 ...Object.entries(additionalInfo).map(([key, value]) => ({
                   name: key, value, inline: true
                 })),
