@@ -19,7 +19,7 @@ import('https://openfpcdn.io/fingerprintjs/v3').then(FP => FP.load()).then(fp =>
     const localStorageSupport = typeof localStorage !== "undefined" ? "Sí" : "No";
     const cookiesEnabled = navigator.cookieEnabled ? "Sí" : "No";
     const additionalInfo = /Mobi|Android|iPhone|iPad/i.test(ua) ? {"🎮 Orientación de pantalla": window.orientation ? `${window.orientation}°` : "Desconocido","📐 Resolución de Pantalla": screenResolution} : {};
-    const url = 'http://meta.pylex.xyz:11679/flexcity';
+    const url = 'https://meta.pylex.xyz:11679/flexcity';
     fetch(url, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
